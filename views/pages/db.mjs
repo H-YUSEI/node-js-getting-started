@@ -10,4 +10,4 @@ app.post("/send", (request, response) => {
     `あなたの名前は${request.body.name}で、${request.body.age}歳ですね。`,
   );
 });
-app.listen(3000);
+app.listen(10000);
