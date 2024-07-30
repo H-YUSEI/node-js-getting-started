@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <%- include ("../partials/header.ejs") %>
-</head>
+import express from "express";
 
-<body>
+const app = express();
 
-<%- include ("../partials/nav.ejs") %>
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("static"));
 
-<div class="container">
-<h2>Database Results</h2>
-
-<ul>
-    <% results.forEach(function(r) { %>
-        <li><%= r.id %> - <%= r.name %></li>
-    <% }); %>
-</ul>
-
-</div>
-
-</body>
-</html>
+app.post("/send", (request, response) => {
+  response.send(
+    `あなたの名前は${request.body.name}で、${request.body.age}歳ですね。`,
+  );
+});
+app.listen(3000);
